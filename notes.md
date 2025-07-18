@@ -77,3 +77,64 @@ package org.springframework.data.jpa.repository;
 + PagingAndSortingRepository
 
 + All related functionality
+
+
+## ✅ What is a Service in Spring Boot?
++ In Spring Boot (and general layered architecture), a Service is a class that contains ` business logic` .
+
++ It acts as a bridge between the ` controller `  and the`  repository` :
+
++ The Controller handles HTTP requests.
+
++ The Repository handles database operations.
+
++ The Service handles business logic (e.g., calculations, validations, data transformation, etc.).
+
+🔄 Flow of a Spring Boot app:
+```
+Client (browser/postman) 
+     ⬇
+ Controller (@RestController)
+     ⬇
+ Service (@Service)
+     ⬇
+ Repository (JpaRepository)
+     ⬇
+ Database
+```
+📦 Example Structure
+#### 📁 StudentController.java
+```
+@RestController
+@RequestMapping("/students")
+public class StudentController {
+
+    @Autowired
+    private StudentService studentService;
+
+    @PostMapping
+    public Student createStudent(@RequestBody Student student) {
+        return studentService.saveStudent(student);
+    }
+}
+```
+#### 📁 StudentService.java
+```
+@Service
+public class StudentService {
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    public Student saveStudent(Student student) {
+        // business logic, like checking if student already exists
+        return studentRepository.save(student);
+    }
+}
+```
+### 📁 StudentRepository.java
+```
+public interface StudentRepository extends JpaRepository<Student, Integer> {
+    // JPA provides methods like save(), findById(), findAll(), delete(), etc.
+}
+```
