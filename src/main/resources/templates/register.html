@@ -31,7 +31,7 @@
         <div class="col-6 coffee_mug_background">
             <div class="logo_left mt-3 pt-4 ms-5 pl-5">
                 <h2 class="logo" style="color: white">
-                    hotdevjobs <span class="logo_com">.com</span>
+                   boisar&palgharjob  <span class="logo_com">.com</span>
                 </h2>
             </div>
         </div>
@@ -50,6 +50,19 @@
                                 method="post"
                         >
                             <div class="box-body bozero mx2p">
+
+                                <!-- Error message display -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div th:if="${error}" class="alert alert-danger" role="alert">
+                                                <p th:text="${error}"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End error message display -->
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
