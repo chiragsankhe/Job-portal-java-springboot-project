@@ -21,12 +21,6 @@ public class UsersType {
     public UsersType() {
     }
 
-    public UsersType(int userTypeId, String userTypeName, List<Users> users) {
-        this.userTypeId = userTypeId;
-        this.userTypeName = userTypeName;
-        this.users = users;
-    }
-
     public int getUserTypeId() {
         return userTypeId;
     }

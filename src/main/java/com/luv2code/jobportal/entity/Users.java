@@ -9,35 +9,36 @@ import java.util.Date;
 @Entity
 @Table(name = "users")
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userId;
+   private  int userId;
 
     @Column(unique = true)
-    private String email;
+   private String email;
 
-    @NotEmpty
-    private String password;
+   private String password;
 
-    private boolean isActive;
+   private boolean isActive;
 
-    @DateTimeFormat(pattern= "dd-MM-yyyy")
-    private Date registrationDate;
+   @DateTimeFormat(pattern = "dd-MM-yyyy")
+   private Date registrationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userTypeId", referencedColumnName = "userTypeId")
-    private UsersType usersType;
+   @ManyToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "userTypeId" , referencedColumnName = "userTypeId")
+   private UsersType userTypeId;
 
     public Users() {
     }
 
-    public Users(int userId, String email, String password, boolean isActive, Date  registrationDate, UsersType usersType) {
+    public Users(int userId, String email, String password,
+                 boolean isActive, Date registrationDate, UsersType userTypeId) {
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.isActive = isActive;
-        this. registrationDate =  registrationDate;
-        this.usersType = usersType;
+        this.registrationDate = registrationDate;
+        this.userTypeId = userTypeId;
     }
 
     public int getUserId() {
@@ -72,20 +73,20 @@ public class Users {
         isActive = active;
     }
 
-    public Date getregistrationDate() {
-        return  registrationDate;
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setregistrationDate(Date  registrationDate) {
-        this. registrationDate =  registrationDate;
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
-    public UsersType getUsersType() {
-        return usersType;
+    public UsersType getUserTypeId() {
+        return userTypeId;
     }
 
-    public void setUsersType(UsersType usersType) {
-        this.usersType = usersType;
+    public void setUserTypeId(UsersType userTypeId) {
+        this.userTypeId = userTypeId;
     }
 
     @Override
@@ -95,8 +96,8 @@ public class Users {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", isActive=" + isActive +
-                ",  registrationDate=" +  registrationDate +
-                ", usersType=" + usersType +
+                ", registrationDate=" + registrationDate +
+                ", userTypeId=" + userTypeId +
                 '}';
     }
 }
