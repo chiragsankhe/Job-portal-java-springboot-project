@@ -19,6 +19,7 @@ public class RecruiterProfile {
     private String lastName;
 
     private String city;
+    private String state;
 
     private String country;
     private String company;
@@ -30,13 +31,14 @@ public class RecruiterProfile {
     }
 
     public RecruiterProfile(int userAccountId, Users userId, String firstName,
-                            String lastName, String city, String country,
+                            String lastName, String city, String state ,String country,
                             String company, String profilePhoto) {
         this.userAccountId = userAccountId;
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
+        this.state = state;
         this.country = country;
         this.company = company;
         this.profilePhoto = profilePhoto;
@@ -87,6 +89,14 @@ public class RecruiterProfile {
         this.city = city;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public String getCountry() {
         return country;
     }
@@ -111,6 +121,13 @@ public class RecruiterProfile {
         this.profilePhoto = profilePhoto;
     }
 
+    @Transient
+    public String getPhotosImagePath()
+    {
+        if(profilePhoto == null ) return null;
+        return "/photos/recruiter/" + userAccountId + "/" + profilePhoto;
+    }
+
     @Override
     public String toString() {
         return "RecruiterProfile{" +
@@ -119,6 +136,7 @@ public class RecruiterProfile {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", company='" + company + '\'' +
                 ", profilePhoto='" + profilePhoto + '\'' +
