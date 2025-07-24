@@ -44,7 +44,7 @@ public class RecruiterProfileController {
            String currentUsername = authentication.getName();
            Users users = usersRepository.findByEmail(currentUsername).orElseThrow(() ->
                    new UsernameNotFoundException("could not found user"));
-         Optional<RecruiterProfile> recruiterProfile =   recruiterProfileService.getOne(users.getUserId());
+         Optional<RecruiterProfile> recruiterProfile =   recruiterProfileService.getOne(Integer.valueOf(users.getUserId()));
 
          if(! recruiterProfile.isEmpty())
          {

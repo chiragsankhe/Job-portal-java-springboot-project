@@ -26,4 +26,6 @@ public class RecruiterProfileService {
 
         return recruiterRepository.save(recruiterProfile);
     }
+
+
 }
